@@ -10,8 +10,15 @@ import {
 
 const mapDispatchToProps = (dispatch) => ({
   onLoad: (pager, payload) =>
-    dispatch({ type: PROFILE_PAGE_LOADED, pager, payload }),
-  onUnload: () => dispatch({ type: PROFILE_PAGE_UNLOADED }),
+    dispatch({
+      type: PROFILE_PAGE_LOADED,
+      pager,
+      payload,
+    }),
+  onUnload: () =>
+    dispatch({
+      type: PROFILE_PAGE_UNLOADED,
+    }),
 });
 
 class ProfileFavorites extends Profile {

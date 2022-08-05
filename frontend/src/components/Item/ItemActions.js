@@ -5,7 +5,11 @@ import { connect } from "react-redux";
 import { DELETE_ITEM } from "../../constants/actionTypes";
 
 const mapDispatchToProps = (dispatch) => ({
-  onClickDelete: (payload) => dispatch({ type: DELETE_ITEM, payload }),
+  onClickDelete: (payload) =>
+    dispatch({
+      type: DELETE_ITEM,
+      payload,
+    }),
 });
 
 const ItemActions = (props) => {

@@ -29,13 +29,15 @@ const LoggedInView = (props) => {
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
           <Link to="/editor" className="nav-link">
-            <i className="ion-compose"></i>&nbsp;New Item
+            <i className="ion-compose"></i>
+            &nbsp;New Item
           </Link>
         </li>
 
         <li className="nav-item">
           <Link to="/settings" className="nav-link">
-            <i className="ion-gear-a"></i>&nbsp;Settings
+            <i className="ion-gear-a"></i>
+            &nbsp;Settings
           </Link>
         </li>
 
@@ -61,7 +63,9 @@ class Header extends React.Component {
     return (
       <nav
         className="navbar navbar-expand-md navbar-dark"
-        style={{ padding: "0.5rem 2rem" }}
+        style={{
+          padding: "0.5rem 2rem",
+        }}
       >
         <Link to="/" className="navbar-brand">
           <img alt="logo" src={logo} />

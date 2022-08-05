@@ -38,10 +38,24 @@ const requests = {
 const Auth = {
   current: () => requests.get("/user"),
   login: (email, password) =>
-    requests.post("/users/login", { user: { email, password } }),
+    requests.post("/users/login", {
+      user: {
+        email,
+        password,
+      },
+    }),
   register: (username, email, password) =>
-    requests.post("/users", { user: { username, email, password } }),
-  save: (user) => requests.put("/user", { user }),
+    requests.post("/users", {
+      user: {
+        username,
+        email,
+        password,
+      },
+    }),
+  save: (user) =>
+    requests.put("/user", {
+      user,
+    }),
 };
 
 const Tags = {
@@ -49,7 +63,10 @@ const Tags = {
 };
 
 const limit = (count, p) => `limit=${count}&offset=${p ? p * count : 0}`;
-const omitSlug = (item) => Object.assign({}, item, { slug: undefined });
+const omitSlug = (item) =>
+  Object.assign({}, item, {
+    slug: undefined,
+  });
 const Items = {
   all: (page) => requests.get(`/items?${limit(1000, page)}`),
   bySeller: (seller, page) =>
@@ -64,13 +81,20 @@ const Items = {
   get: (slug) => requests.get(`/items/${slug}`),
   unfavorite: (slug) => requests.del(`/items/${slug}/favorite`),
   update: (item) =>
-    requests.put(`/items/${item.slug}`, { item: omitSlug(item) }),
-  create: (item) => requests.post("/items", { item }),
+    requests.put(`/items/${item.slug}`, {
+      item: omitSlug(item),
+    }),
+  create: (item) =>
+    requests.post("/items", {
+      item,
+    }),
 };
 
 const Comments = {
   create: (slug, comment) =>
-    requests.post(`/items/${slug}/comments`, { comment }),
+    requests.post(`/items/${slug}/comments`, {
+      comment,
+    }),
   delete: (slug, commentId) =>
     requests.del(`/items/${slug}/comments/${commentId}`),
   forItem: (slug) => requests.get(`/items/${slug}/comments`),

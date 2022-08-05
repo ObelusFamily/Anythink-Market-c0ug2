@@ -4,7 +4,11 @@ import { connect } from "react-redux";
 import { ADD_COMMENT } from "../../constants/actionTypes";
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmit: (payload) => dispatch({ type: ADD_COMMENT, payload }),
+  onSubmit: (payload) =>
+    dispatch({
+      type: ADD_COMMENT,
+      payload,
+    }),
 });
 
 class CommentInput extends React.Component {
@@ -15,7 +19,9 @@ class CommentInput extends React.Component {
     };
 
     this.setBody = (ev) => {
-      this.setState({ body: ev.target.value });
+      this.setState({
+        body: ev.target.value,
+      });
     };
 
     this.createComment = (ev) => {
@@ -23,7 +29,9 @@ class CommentInput extends React.Component {
       const payload = agent.Comments.create(this.props.slug, {
         body: this.state.body,
       });
-      this.setState({ body: "" });
+      this.setState({
+        body: "",
+      });
       this.props.onSubmit(payload);
     };
   }

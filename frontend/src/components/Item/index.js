@@ -15,8 +15,15 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onLoad: (payload) => dispatch({ type: ITEM_PAGE_LOADED, payload }),
-  onUnload: () => dispatch({ type: ITEM_PAGE_UNLOADED }),
+  onLoad: (payload) =>
+    dispatch({
+      type: ITEM_PAGE_LOADED,
+      payload,
+    }),
+  onUnload: () =>
+    dispatch({
+      type: ITEM_PAGE_UNLOADED,
+    }),
 });
 
 class Item extends React.Component {
@@ -39,9 +46,11 @@ class Item extends React.Component {
     }
 
     const markup = {
-      __html: marked(this.props.item.description, { sanitize: true }),
+      __html: marked(this.props.item.description, {
+        sanitize: true,
+      }),
     };
-    const image = this.props.item.image || '/placeholder.png';
+    const image = this.props.item.image || "/placeholder.png";
     const canModify =
       this.props.currentUser &&
       this.props.currentUser.username === this.props.item.seller.username;
@@ -54,7 +63,11 @@ class Item extends React.Component {
                 src={image}
                 alt={this.props.item.title}
                 className="item-img"
-                style={{ height: "500px", width: "100%", borderRadius: "6px" }}
+                style={{
+                  height: "500px",
+                  width: "100%",
+                  borderRadius: "6px",
+                }}
               />
             </div>
 

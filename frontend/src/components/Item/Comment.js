@@ -8,7 +8,12 @@ const Comment = (props) => {
     props.currentUser && props.currentUser.username === comment.seller.username;
   return (
     <div className="col-xs-10 col-md-6">
-      <div className="card m-2 shadow-sm" style={{ minHeight: "200px" }}>
+      <div
+        className="card m-2 shadow-sm"
+        style={{
+          minHeight: "200px",
+        }}
+      >
         <div className="card-body d-flex flex-column">
           <p className="card-text flex-grow-1">{comment.body}</p>
           <div className="d-flex flex-row align-items-center pt-2">

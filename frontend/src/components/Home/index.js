@@ -20,10 +20,23 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onClickTag: (tag, pager, payload) =>
-    dispatch({ type: APPLY_TAG_FILTER, tag, pager, payload }),
+    dispatch({
+      type: APPLY_TAG_FILTER,
+      tag,
+      pager,
+      payload,
+    }),
   onLoad: (tab, pager, payload) =>
-    dispatch({ type: HOME_PAGE_LOADED, tab, pager, payload }),
-  onUnload: () => dispatch({ type: HOME_PAGE_UNLOADED }),
+    dispatch({
+      type: HOME_PAGE_LOADED,
+      tab,
+      pager,
+      payload,
+    }),
+  onUnload: () =>
+    dispatch({
+      type: HOME_PAGE_UNLOADED,
+    }),
 });
 
 class Home extends React.Component {

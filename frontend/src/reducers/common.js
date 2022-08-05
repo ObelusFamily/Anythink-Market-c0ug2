@@ -33,12 +33,23 @@ const reducer = (state = defaultState, action) => {
         currentUser: action.payload ? action.payload.user : null,
       };
     case REDIRECT:
-      return { ...state, redirectTo: null };
+      return {
+        ...state,
+        redirectTo: null,
+      };
     case LOGOUT:
-      return { ...state, redirectTo: "/", token: null, currentUser: null };
+      return {
+        ...state,
+        redirectTo: "/",
+        token: null,
+        currentUser: null,
+      };
     case ITEM_SUBMITTED: {
       const redirectUrl = `/item/${action.payload.item.slug}`;
-      return { ...state, redirectTo: redirectUrl };
+      return {
+        ...state,
+        redirectTo: redirectUrl,
+      };
     }
     case SETTINGS_SAVED:
       return {
@@ -61,7 +72,10 @@ const reducer = (state = defaultState, action) => {
         currentUser: action.error ? null : action.payload.user,
       };
     case DELETE_ITEM:
-      return { ...state, redirectTo: "/" };
+      return {
+        ...state,
+        redirectTo: "/",
+      };
     case ITEM_PAGE_UNLOADED:
     case EDITOR_PAGE_UNLOADED:
     case HOME_PAGE_UNLOADED:
@@ -70,7 +84,10 @@ const reducer = (state = defaultState, action) => {
     case SETTINGS_PAGE_UNLOADED:
     case LOGIN_PAGE_UNLOADED:
     case REGISTER_PAGE_UNLOADED:
-      return { ...state, viewChangeCounter: state.viewChangeCounter + 1 };
+      return {
+        ...state,
+        viewChangeCounter: state.viewChangeCounter + 1,
+      };
     default:
       return state;
   }

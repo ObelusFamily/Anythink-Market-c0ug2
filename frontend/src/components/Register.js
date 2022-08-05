@@ -9,20 +9,40 @@ import {
   REGISTER_PAGE_UNLOADED,
 } from "../constants/actionTypes";
 
-const mapStateToProps = (state) => ({ ...state.auth });
+const mapStateToProps = (state) => ({
+  ...state.auth,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeEmail: (value) =>
-    dispatch({ type: UPDATE_FIELD_AUTH, key: "email", value }),
+    dispatch({
+      type: UPDATE_FIELD_AUTH,
+      key: "email",
+      value,
+    }),
   onChangePassword: (value) =>
-    dispatch({ type: UPDATE_FIELD_AUTH, key: "password", value }),
+    dispatch({
+      type: UPDATE_FIELD_AUTH,
+      key: "password",
+      value,
+    }),
   onChangeUsername: (value) =>
-    dispatch({ type: UPDATE_FIELD_AUTH, key: "username", value }),
+    dispatch({
+      type: UPDATE_FIELD_AUTH,
+      key: "username",
+      value,
+    }),
   onSubmit: (username, email, password) => {
     const payload = agent.Auth.register(username, email, password);
-    dispatch({ type: REGISTER, payload });
+    dispatch({
+      type: REGISTER,
+      payload,
+    });
   },
-  onUnload: () => dispatch({ type: REGISTER_PAGE_UNLOADED }),
+  onUnload: () =>
+    dispatch({
+      type: REGISTER_PAGE_UNLOADED,
+    }),
 });
 
 class Register extends React.Component {
@@ -62,7 +82,9 @@ class Register extends React.Component {
                       <div className="input-group-prepend">
                         <span
                           className="input-group-text"
-                          style={{ background: null }}
+                          style={{
+                            background: null,
+                          }}
                         >
                           <i className="bi bi-person-fill text-secondary"></i>
                         </span>
@@ -82,7 +104,9 @@ class Register extends React.Component {
                       <div className="input-group-prepend">
                         <span
                           className="input-group-text"
-                          style={{ background: null }}
+                          style={{
+                            background: null,
+                          }}
                         >
                           <i className="bi bi-lock-fill text-secondary"></i>
                         </span>
@@ -102,7 +126,9 @@ class Register extends React.Component {
                       <div className="input-group-prepend">
                         <span
                           className="input-group-text"
-                          style={{ background: null }}
+                          style={{
+                            background: null,
+                          }}
                         >
                           <i className="bi bi-envelope-fill text-secondary"></i>
                         </span>

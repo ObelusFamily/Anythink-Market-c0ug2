@@ -22,7 +22,9 @@ class SettingsForm extends React.Component {
 
     this.updateState = (field) => (ev) => {
       const state = this.state;
-      const newState = Object.assign({}, state, { [field]: ev.target.value });
+      const newState = Object.assign({}, state, {
+        [field]: ev.target.value,
+      });
       this.setState(newState);
     };
 
@@ -135,10 +137,19 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onClickLogout: () => dispatch({ type: LOGOUT }),
+  onClickLogout: () =>
+    dispatch({
+      type: LOGOUT,
+    }),
   onSubmitForm: (user) =>
-    dispatch({ type: SETTINGS_SAVED, payload: agent.Auth.save(user) }),
-  onUnload: () => dispatch({ type: SETTINGS_PAGE_UNLOADED }),
+    dispatch({
+      type: SETTINGS_SAVED,
+      payload: agent.Auth.save(user),
+    }),
+  onUnload: () =>
+    dispatch({
+      type: SETTINGS_PAGE_UNLOADED,
+    }),
 });
 
 class Settings extends React.Component {

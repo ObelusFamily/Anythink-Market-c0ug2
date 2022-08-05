@@ -66,7 +66,12 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onTabClick: (tab, pager, payload) =>
-    dispatch({ type: CHANGE_TAB, tab, pager, payload }),
+    dispatch({
+      type: CHANGE_TAB,
+      tab,
+      pager,
+      payload,
+    }),
 });
 
 const MainView = (props) => {

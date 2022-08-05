@@ -16,13 +16,35 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onAddTag: () => dispatch({ type: ADD_TAG }),
-  onLoad: (payload) => dispatch({ type: EDITOR_PAGE_LOADED, payload }),
-  onRemoveTag: (tag) => dispatch({ type: REMOVE_TAG, tag }),
-  onSubmit: (payload) => dispatch({ type: ITEM_SUBMITTED, payload }),
-  onUnload: (payload) => dispatch({ type: EDITOR_PAGE_UNLOADED }),
+  onAddTag: () =>
+    dispatch({
+      type: ADD_TAG,
+    }),
+  onLoad: (payload) =>
+    dispatch({
+      type: EDITOR_PAGE_LOADED,
+      payload,
+    }),
+  onRemoveTag: (tag) =>
+    dispatch({
+      type: REMOVE_TAG,
+      tag,
+    }),
+  onSubmit: (payload) =>
+    dispatch({
+      type: ITEM_SUBMITTED,
+      payload,
+    }),
+  onUnload: (payload) =>
+    dispatch({
+      type: EDITOR_PAGE_UNLOADED,
+    }),
   onUpdateField: (key, value) =>
-    dispatch({ type: UPDATE_FIELD_EDITOR, key, value }),
+    dispatch({
+      type: UPDATE_FIELD_EDITOR,
+      key,
+      value,
+    }),
 });
 
 class Editor extends React.Component {
@@ -56,7 +78,9 @@ class Editor extends React.Component {
         tagList: this.props.tagList,
       };
 
-      const slug = { slug: this.props.itemSlug };
+      const slug = {
+        slug: this.props.itemSlug,
+      };
       const promise = this.props.itemSlug
         ? agent.Items.update(Object.assign(item, slug))
         : agent.Items.create(item);
